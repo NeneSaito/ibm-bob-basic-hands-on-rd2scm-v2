@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bob よくある質問</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo-link" href="https://www.ibm.com/products/bob" target="_blank" rel="noopener noreferrer">
+        <img src="bob.svg" alt="Bob(IBM Bob 製品ページへ)" height="40">
+      </a>
+      <h1>Bob よくある質問</h1>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">ダークテーマ</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="search">
+      <label for="search-input">キーワード検索</label>
+      <input id="search-input" type="search" placeholder="質問や回答からキーワードで検索" autocomplete="off">
+    </div>
+
+    <div id="category-buttons" class="categories" role="group" aria-label="カテゴリで絞り込み"></div>
+
+    <p id="result-count" class="result-count" aria-live="polite"></p>
+
+    <div id="faq-list" class="faq-list"></div>
+
+    <p id="empty-message" class="empty-message" hidden>該当する質問が見つかりませんでした</p>
+  </main>
+
+  <footer class="site-footer">
+    <p>このページは <code>qa.md</code> を日本語に翻訳したものです。原本は <code>qa.md</code>(英語)です。</p>
+  </footer>
+
+  <script src="faq-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
