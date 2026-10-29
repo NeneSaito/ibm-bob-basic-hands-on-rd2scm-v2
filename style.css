@@ -1,0 +1,418 @@
+/* ============================
+   CSS Variables
+   ============================ */
+:root {
+  --color-bg: #f4f4f4;
+  --color-surface: #ffffff;
+  --color-border: #e0e0e0;
+  --color-text: #262626;
+  --color-text-muted: #6f6f6f;
+  --color-primary: #0f62fe;
+  --color-on-primary: #fff;
+  --color-primary-hover: #0043ce;
+  --color-primary-light: #edf5ff;
+  --color-primary-focus: rgba(15, 98, 254, 0.12);
+  --color-accent: #a56eff;
+  --color-success: #10b981;
+  --header-gradient: linear-gradient(135deg, #0f62fe 0%, #a56eff 100%);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.07);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --transition: 0.25s ease;
+}
+
+/* ============================
+   Dark Theme
+   ============================ */
+html[data-theme="dark"] {
+  --color-bg: #161616;
+  --color-surface: #262626;
+  --color-border: #393939;
+  --color-text: #f4f4f4;
+  --color-text-muted: #a8a8a8;
+  --color-primary: #4589ff;
+  --color-on-primary: #161616;
+  --color-primary-hover: #78a9ff;
+  --color-primary-light: rgba(69, 137, 255, 0.18);
+  --color-primary-focus: rgba(69, 137, 255, 0.25);
+  --color-accent: #a56eff;
+  --header-gradient: linear-gradient(135deg, #0043ce 0%, #6929c4 100%);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================
+   Reset & Base
+   ============================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, "Segoe UI", "Hiragino Sans", "Noto Sans JP", sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-text);
+  background: var(--color-bg);
+  min-height: 100vh;
+}
+
+/* ============================
+   Header
+   ============================ */
+.site-header {
+  position: relative;
+  background: var(--header-gradient);
+  color: #fff;
+  padding: 72px 24px 40px;
+  text-align: center;
+}
+
+.header-top {
+  position: absolute;
+  top: 16px;
+  left: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-link {
+  display: inline-flex;
+  border-radius: var(--radius-sm);
+}
+
+.logo-link img {
+  width: 48px;
+  height: 48px;
+  display: block;
+}
+
+.logo-link:focus-visible,
+.theme-toggle:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.theme-toggle .icon-sun {
+  display: none;
+}
+
+html[data-theme="dark"] .theme-toggle .icon-moon {
+  display: none;
+}
+
+html[data-theme="dark"] .theme-toggle .icon-sun {
+  display: block;
+}
+
+.site-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.site-header p {
+  font-size: 1rem;
+  opacity: 0.85;
+}
+
+/* ============================
+   Main Container
+   ============================ */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+}
+
+/* ============================
+   Search Bar
+   ============================ */
+.search-wrapper {
+  position: relative;
+  margin-top: -28px;
+  margin-bottom: 28px;
+}
+
+.search-wrapper svg {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+#search-input {
+  width: 100%;
+  padding: 16px 16px 16px 48px;
+  font-size: 15px;
+  font-family: inherit;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-md);
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  color: var(--color-text);
+}
+
+#search-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px var(--color-primary-focus);
+}
+
+#search-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* ============================
+   Category Filter
+   ============================ */
+.category-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.category-btn {
+  padding: 7px 18px;
+  font-size: 13.5px;
+  font-family: inherit;
+  font-weight: 500;
+  border: 1.5px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+
+.category-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+}
+
+.category-btn.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+/* ============================
+   FAQ Section
+   ============================ */
+.faq-section {
+  margin-bottom: 36px;
+}
+
+.section-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  margin-bottom: 12px;
+  padding-left: 4px;
+}
+
+/* ============================
+   Accordion Item
+   ============================ */
+.faq-item {
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  margin-bottom: 10px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow var(--transition);
+}
+
+.faq-item:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 20px;
+  font-size: 15px;
+  font-family: inherit;
+  font-weight: 600;
+  color: var(--color-text);
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+
+.faq-question:hover {
+  background: var(--color-bg);
+}
+
+.faq-question.active {
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+}
+
+.faq-icon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  background: var(--color-bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition), background var(--transition);
+}
+
+.faq-question.active .faq-icon {
+  transform: rotate(180deg);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+}
+
+.faq-answer.open {
+  max-height: 600px;
+}
+
+.faq-answer-inner {
+  padding: 4px 20px 20px;
+  color: var(--color-text-muted);
+  font-size: 14.5px;
+  line-height: 1.75;
+  border-top: 1px solid var(--color-border);
+  margin-top: 0;
+  padding-top: 16px;
+}
+
+.faq-answer-inner ul {
+  padding-left: 1.4em;
+  margin-top: 8px;
+}
+
+.faq-answer-inner li {
+  margin-bottom: 4px;
+}
+
+.faq-answer-inner strong {
+  color: var(--color-text);
+}
+
+/* ============================
+   No Results Message
+   ============================ */
+#no-results {
+  display: none;
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--color-text-muted);
+  font-size: 15px;
+}
+
+#no-results svg {
+  margin-bottom: 16px;
+  opacity: 0.4;
+}
+
+/* ============================
+   Footer
+   ============================ */
+.site-footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  border-top: 1px solid var(--color-border);
+}
+
+/* ============================
+   Responsive
+   ============================ */
+@media (max-width: 768px) {
+  .site-header {
+    padding: 64px 16px 32px;
+  }
+
+  .site-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .header-top {
+    top: 12px;
+    left: 16px;
+    right: 16px;
+  }
+
+  .logo-link img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .container {
+    padding: 0 12px 48px;
+  }
+
+  .search-wrapper {
+    margin-top: -24px;
+  }
+
+  #search-input {
+    padding: 14px 14px 14px 44px;
+    font-size: 14px;
+  }
+
+  .faq-question {
+    padding: 14px 16px;
+    font-size: 14px;
+  }
+
+  .faq-answer-inner {
+    padding: 12px 16px 16px;
+    font-size: 14px;
+  }
+}
